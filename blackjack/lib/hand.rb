@@ -1,3 +1,3 @@
 class Hand
-  # Your code here
-end
+require_relative "card"
+require_relative "deck"
