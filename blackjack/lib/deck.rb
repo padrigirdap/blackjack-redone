@@ -14,7 +14,7 @@ class Deck
     cards = []
     SUITS.each do |suit|
       RANKS.each do |rank|
-        cards << "#{rank}#{suit}"
+        cards << Card.new(rank, suit)
       end
     end
     cards.shuffle!
