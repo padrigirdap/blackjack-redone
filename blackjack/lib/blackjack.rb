@@ -21,6 +21,10 @@ class Blackjack
     puts "dealer was dealt a card"
   end
 
+  def dealer_show
+    @computer.show_cards_comp
+  end
+
   def player_cards
     @player.show_cards
   end
@@ -31,23 +35,22 @@ class Blackjack
       @answer = gets.chomp
       if @answer == 'hit'
         @player.hand << @deck.deal(1)
-        puts "@player was dealt a card"
-        @player.show_cards
+        puts "Player was dealt a card"
+        player_cards
         if @player.score > 21
-          @computer.show_cards_comp
+          dealer_show
           puts "Dealer wins with #{@computer.score}. You busted."
           break
         end
       elsif @answer == 'stand'
         puts "You chose to stand with #{@player.score}"
+        dealer_show
+        calculate_final
         break
       end
     end
   end
 
-  def dealer_show
-  @computer.show_cards_comp
-  end
 
   def calculate_final
     if @player.score == 21 && @computer.score != 21
