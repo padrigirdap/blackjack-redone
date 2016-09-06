@@ -12,21 +12,30 @@ class Blackjack
 
   def deal
     @player.hand << @deck.deal(1)
-    puts "@player was dealt a card"
+    puts "player was dealt a card"
     @computer.hand << @deck.deal(1)
     puts "dealer was dealt a card"
     @player.hand << @deck.deal(1)
-    puts "@player was dealt a card"
+    puts "player was dealt a card"
     @computer.hand << @deck.deal(1)
     puts "dealer was dealt a card"
   end
 
   def dealer_show
-    @computer.show_cards_comp
+    puts "Dealer:"
+    @computer.show_cards
   end
 
   def player_cards
     @player.show_cards
+  end
+
+  def dealer_minimum
+    while @computer.score < 17
+      @computer.hand << @deck.deal(1)
+      puts "dealer hits"
+      dealer_show
+    end
   end
 
   def measure_player_score
@@ -44,12 +53,13 @@ class Blackjack
         end
       elsif @answer == 'stand'
         puts "You chose to stand with #{@player.score}"
-        dealer_show
+        dealer_minimum
         calculate_final
         break
       end
     end
   end
+
 
   def calculate_final
     if @player.score == 21 && @computer.score != 21
@@ -68,6 +78,7 @@ class Blackjack
   def start_game
     deal
     player_cards
+    dealer_show
     measure_player_score
   end
 end
