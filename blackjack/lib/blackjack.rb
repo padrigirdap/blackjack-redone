@@ -51,7 +51,6 @@ class Blackjack
     end
   end
 
-
   def calculate_final
     if @player.score == 21 && @computer.score != 21
       puts "21! Blackjack! You win!"

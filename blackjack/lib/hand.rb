@@ -13,7 +13,11 @@ class Hand
   def show_cards
     @hand.flatten!
     @hand.each do |card|
-      puts "you have a #{card.rank} of #{card.suit}"
+      puts "-------"
+      puts "|     |"
+      puts "|  #{card.rank}#{card.suit} |"
+      puts "|     |"
+      puts "-------"
     end
     self.calculate_score
   end
@@ -21,7 +25,11 @@ class Hand
   def show_cards_comp
     @hand.flatten!
     @hand.each do |card|
-      puts "The dealer has a #{card.rank} of #{card.suit}"
+      puts "-------"
+      puts "|     |"
+      puts "|  #{card.rank}#{card.suit} |"
+      puts "|     |"
+      puts "-------"
     end
     self.calculate_score
   end
